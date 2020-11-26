@@ -1,0 +1,12 @@
+language: java
+jdk:
+  - openjdk11
+
+addons:
+  sonarcloud:
+    organization: "leopetr95"
+    token: b15163cb2d8b640d15ed20a6169b92f6626e8c48
+script:
+
+  # -Dtest=... --> Indica la classe di test da eseguire
+  - mvn verify -DfailIfNoTests=false sonar:sonar -Pcode-coverage -Dsonar.projectKey=leopetr95_bookkeeper -Dmaven.test.failure.ignore=true

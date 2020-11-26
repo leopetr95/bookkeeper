@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--Indica il pom a cui si riferisce -->
+    <parent>
+        <artifactId>bookkeeper</artifactId>
+        <groupId>org.apache.bookkeeper</groupId>
+        <version>4.11.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--Serve a sonar per capire la directory in cui viene eseguito jacoco -->
+    <properties>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
+    </properties>
+
+    <artifactId>testmoduleBook</artifactId>
+
+    <dependencies>
+
+        <!-- TEST DEPENDENCIES -->
+
+        <!--Modulo che contiene le classi da testare -->
+        <dependency>
+            <groupId>org.apache.bookkeeper</groupId>
+            <artifactId>bookkeeper-server</artifactId>
+            <version>4.11.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
+
+    <name>Apache Bookkeeper :: Tests Coverage</name>
+
+    <!--Eseguo jacoco nella fase verify di maven-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>report</id>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                        <phase>verify</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
