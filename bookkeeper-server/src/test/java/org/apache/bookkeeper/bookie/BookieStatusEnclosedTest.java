@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 @RunWith(Enclosed.class)
 public class BookieStatusEnclosedTest {
 
-
+ //prova di commit
 
     @BeforeClass
     public static void createDirectory(){
