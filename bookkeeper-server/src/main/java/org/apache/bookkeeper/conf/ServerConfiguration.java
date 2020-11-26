@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.bookkeeper.bookie.InterleavedLedgerStorage;
 import org.apache.bookkeeper.bookie.LedgerStorage;
 import org.apache.bookkeeper.bookie.SortedLedgerStorage;
-import org.apache.bookkeeper.bookie.storage.ldb.DbLedgerStorage;
+import org.apache.bookkeeper.bookie.ldb.DbLedgerStorage;
 import org.apache.bookkeeper.common.conf.ConfigDef;
 import org.apache.bookkeeper.common.conf.ConfigException;
 import org.apache.bookkeeper.common.conf.ConfigKey;

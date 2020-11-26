@@ -31,7 +31,7 @@ public abstract class BufferedChannelBase {
         }
     }
 
-    protected final FileChannel fileChannel;
+    public final FileChannel fileChannel;
 
     protected BufferedChannelBase(FileChannel fc) {
         this.fileChannel = fc;

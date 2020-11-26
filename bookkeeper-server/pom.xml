@@ -24,6 +24,14 @@
   </parent>
   <artifactId>bookkeeper-server</artifactId>
   <name>Apache BookKeeper :: Server</name>
+
+  <properties>
+
+    <jacoco-maven-plugin.version>0.8.0</jacoco-maven-plugin.version>
+    <aggregate.report.dir>moduleTestBookkeeper/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+    <sonar.coverage.jacoco.xmlReportPaths>${project.basedir}/../${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.apache.bookkeeper</groupId>
@@ -170,9 +178,80 @@
       <version>${project.parent.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.pitest/pitest-maven -->
+    <dependency>
+      <groupId>org.pitest</groupId>
+      <artifactId>pitest-maven</artifactId>
+      <version>1.4.11</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.11</version>
+        <configuration>
+
+          <!--Classi da testare-->
+          <targetClasses>
+            <param>org.apache.bookkeeper.bookie.BufferedChannel</param>
+            <param>org.apache.bookkeeper.bookie.BookieStatus</param>
+          </targetClasses>
+          <!--Classi di test create per eseguire i test sulle classi suddette-->
+          <targetTests>
+            <param>BufferedChannelEnclosedTest</param>
+            <param>BookieStatusEnclosedTest</param>
+
+          </targetTests>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.2</version>
+        <executions>
+          <execution>
+            <id>prepare-agent</id>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration>
+          <!-- @{argLine} is a variable injected by JaCoCo-->
+          <argLine>@{argLine} -Xmx2G -Djava.net.preferIPv4Stack=true</argLine>
+          <redirectTestOutputToFile>${redirectTestOutputToFile}</redirectTestOutputToFile>
+          <forkCount>${forkCount.variable}</forkCount>
+          <reuseForks>false</reuseForks>
+          <forkedProcessTimeoutInSeconds>1800</forkedProcessTimeoutInSeconds>
+          <!-- we want build to complete even in case of failures -->
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -310,4 +389,23 @@
       </build>
     </profile>
   </profiles>
+
+  <!--Pit-->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.11</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>

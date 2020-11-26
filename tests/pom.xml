@@ -40,7 +40,6 @@
     <module>integration-tests-topologies</module>
     <module>backward-compat</module>
     <module>integration</module>
-    <module>scripts</module>
   </modules>
   <build>
     <plugins>

@@ -19,7 +19,7 @@
 package org.apache.bookkeeper.tools.cli.commands.bookie;
 
 import java.io.IOException;
-import org.apache.bookkeeper.bookie.storage.ldb.LocationsIndexRebuildOp;
+import org.apache.bookkeeper.bookie.ldb.LocationsIndexRebuildOp;
 import org.apache.bookkeeper.conf.ServerConfiguration;
 import org.apache.bookkeeper.tools.cli.helpers.BookieCommand;
 import org.apache.bookkeeper.tools.framework.CliFlags;

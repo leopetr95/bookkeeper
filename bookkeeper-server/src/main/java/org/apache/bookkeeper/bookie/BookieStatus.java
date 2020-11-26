@@ -39,6 +39,8 @@ import org.slf4j.LoggerFactory;
  */
 public class BookieStatus {
 
+    public static final String BOOKIE_STATUS_FILENAME = "BOOKIE_STATUS";
+
     private static final Logger LOG = LoggerFactory.getLogger(BookieStatus.class);
 
     static final int CURRENT_STATUS_LAYOUT_VERSION = 1;
@@ -54,7 +56,7 @@ public class BookieStatus {
     private long lastUpdateTime;
     private volatile BookieMode bookieMode;
 
-    BookieStatus() {
+    public BookieStatus() {
         this.bookieMode = BookieMode.READ_WRITE;
         this.layoutVersion = CURRENT_STATUS_LAYOUT_VERSION;
         this.lastUpdateTime = INVALID_UPDATE_TIME;
