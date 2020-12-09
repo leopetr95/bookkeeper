@@ -201,12 +201,13 @@
             <param>org.apache.bookkeeper.bookie.BufferedChannel</param>
             <param>org.apache.bookkeeper.bookie.BookieStatus</param>
           </targetClasses>
+
           <!--Classi di test create per eseguire i test sulle classi suddette-->
           <targetTests>
             <param>BufferedChannelEnclosedTest</param>
             <param>BookieStatusEnclosedTest</param>
-
           </targetTests>
+
         </configuration>
       </plugin>
 
