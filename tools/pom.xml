@@ -38,6 +38,7 @@
 <!--        <id>expensive-modules-to-build</id>-->
 <!--        <modules>-->
 <!--          <module>stream</module>-->
+<!--          <module>perf</module>-->
 <!--        </modules>-->
 <!--      </profile>-->
 <!--  </profiles>-->

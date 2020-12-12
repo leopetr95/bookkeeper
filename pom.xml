@@ -64,7 +64,7 @@
     <module>bookkeeper-stats-providers</module>
     <module>bookkeeper-http</module>
 <!--    <module>stream</module>-->
-    <module>tools</module>
+<!--    <module>tools</module>-->
     <module>cpu-affinity</module>
     <module>metadata-drivers</module>
 <!--    <module>bookkeeper-dist</module>-->
@@ -1043,7 +1043,7 @@
           <id>expensive-modules-to-build</id>
           <modules>
             <module>stream</module>
-<!--            <module>tools</module>-->
+            <module>tools</module>
             <module>bookkeeper-dist</module>
             <module>shaded</module>
             <module>tests</module>
