@@ -32,4 +32,14 @@
     <module>perf</module>
     <module>all</module>
   </modules>
+
+<!--  <profiles>-->
+<!--      <profile>-->
+<!--        <id>expensive-modules-to-build</id>-->
+<!--        <modules>-->
+<!--          <module>stream</module>-->
+<!--        </modules>-->
+<!--      </profile>-->
+<!--  </profiles>-->
+
 </project>

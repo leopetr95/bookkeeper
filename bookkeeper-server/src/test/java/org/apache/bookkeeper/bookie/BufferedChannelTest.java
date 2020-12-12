@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Enclosed.class)
-public class BufferedChannelEnclosedTest {
+public class BufferedChannelTest {
 
     @RunWith(Parameterized.class)
     public static class ReadTest {
@@ -49,9 +49,11 @@ public class BufferedChannelEnclosedTest {
                     //{1, Unpooled.buffer(0), 1, 1, 0}, //infinite loop
                     {1, Unpooled.buffer(1), 1, 1, 7}, //gives back 7 because there are 8 bytes written and 1 is skipped
 
-                    //Mutation and Coverage
-                    //{100, Unpooled.buffer(150), 0, 10, IOException.class},
-                    //{100, Unpooled.buffer(150), -1, 0, 0}
+                    {50, null, 0, 0, NullPointerException.class},
+                    {50, Unpooled.buffer(100), 0, 10, IOException.class}, //Nel buffer ci sono solamente 4 scritture, quindi nella
+                    //posizione 10 non c'è nulla.
+                    {50, Unpooled.buffer(100), 0, 4, 8},
+                    {50, Unpooled.buffer(100), -1, 0, 0},
 
             });
 
@@ -129,12 +131,14 @@ public class BufferedChannelEnclosedTest {
                     {50, 0, Unpooled.buffer(0), 1, (long) 1},
                     {50, 0, Unpooled.buffer(1), 1, (long) 1},
 
-                    /*
-                    {100, 0, null, 1, NullPointerException.class},
-                    {100, 0, Unpooled.buffer(1), 1, (long) 1},
-                    {100, 0, Unpooled.buffer(1), 10, (long) 0},
+                    //variazione su UnpersistedBytesBound impostato ad 1>0, quindi ci aspettiamo
+                    //che la scrittura venga correttamente eseguita.
+                    {50, 0, null, 1, NullPointerException.class},
+                    {50, 0, Unpooled.buffer(0), 0, (long) 0},
+                    {50, 0, Unpooled.buffer(1), 0, (long) 0},
 
-                     */
+                    //ulteriore test
+                    {50, 0, Unpooled.buffer(1), 20, (long) 0}
 
             });
 

@@ -204,8 +204,8 @@
 
           <!--Classi di test create per eseguire i test sulle classi suddette-->
           <targetTests>
-            <param>BufferedChannelEnclosedTest</param>
-            <param>BookieStatusEnclosedTest</param>
+            <param>org.apache.bookkeeper.bookie.BookieStatusTest</param>
+            <param>org.apache.bookkeeper.bookie.BufferedChannelTest</param>
           </targetTests>
 
         </configuration>
@@ -391,22 +391,22 @@
     </profile>
   </profiles>
 
-  <!--Pit-->
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.pitest</groupId>
-        <artifactId>pitest-maven</artifactId>
-        <version>1.4.11</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
-    </plugins>
-  </reporting>
+<!--  &lt;!&ndash;Pit&ndash;&gt;-->
+<!--  <reporting>-->
+<!--    <plugins>-->
+<!--      <plugin>-->
+<!--        <groupId>org.pitest</groupId>-->
+<!--        <artifactId>pitest-maven</artifactId>-->
+<!--        <version>1.4.11</version>-->
+<!--        <reportSets>-->
+<!--          <reportSet>-->
+<!--            <reports>-->
+<!--              <report>report</report>-->
+<!--            </reports>-->
+<!--          </reportSet>-->
+<!--        </reportSets>-->
+<!--      </plugin>-->
+<!--    </plugins>-->
+<!--  </reporting>-->
 
 </project>

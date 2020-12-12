@@ -22,9 +22,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 
 @RunWith(Enclosed.class)
-public class BookieStatusEnclosedTest {
-
-//dnsaiodas
+public class BookieStatusTest {
 
     @BeforeClass
     public static void createDirectory(){
@@ -223,6 +221,21 @@ public class BookieStatusEnclosedTest {
         }
 
         @Test
+        public void read1FromDirectoriesTest(){
+
+            try{
+
+                List<File> files = new ArrayList<>();
+
+                new BookieStatus().readFromDirectories(files);
+
+            }catch (Exception e){
+
+                Assert.assertEquals(e.getClass(), res);
+            }
+        }
+
+        @Test
         public void writeToDirectoriesTest(){
 
             try{
@@ -237,6 +250,24 @@ public class BookieStatusEnclosedTest {
 
                 Assert.assertEquals(e.getClass(), res);
             }
+        }
+
+        @Test
+        public void writeToDirectories1Test(){
+
+            try{
+
+                List<File> files = new ArrayList<>();
+                BookieStatus status = new BookieStatus();
+                status.writeToDirectories(files);
+
+            }catch (Exception e){
+
+                Assert.assertEquals(e.getClass(), res);
+            }
+
+
+
         }
 
     }
