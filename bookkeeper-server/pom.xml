@@ -48,11 +48,11 @@
       <artifactId>bookkeeper-proto</artifactId>
       <version>${project.parent.version}</version>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.apache.bookkeeper</groupId>-->
-<!--      <artifactId>bookkeeper-tools-framework</artifactId>-->
-<!--      <version>${project.parent.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.apache.bookkeeper</groupId>
+      <artifactId>bookkeeper-tools-framework</artifactId>
+      <version>${project.parent.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.rocksdb</groupId>
       <artifactId>rocksdbjni</artifactId>
