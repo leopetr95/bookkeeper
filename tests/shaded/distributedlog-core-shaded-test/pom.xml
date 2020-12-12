@@ -29,7 +29,7 @@
     <dependency>
       <groupId>org.apache.distributedlog</groupId>
       <artifactId>distributedlog-core-shaded</artifactId>
-      <version>${project.version}</version>
+      <version>4.11.0</version>
       <scope>test</scope>
       <!-- when running `mvn install` in the whole project,
            it will still reference none dependency-reduced

@@ -63,14 +63,14 @@
     <module>bookkeeper-benchmark</module>
     <module>bookkeeper-stats-providers</module>
     <module>bookkeeper-http</module>
-<!--    <module>stream</module>-->
-<!--    <module>tools</module>-->
+    <module>stream</module>
+    <module>tools</module>
     <module>cpu-affinity</module>
     <module>metadata-drivers</module>
-<!--    <module>bookkeeper-dist</module>-->
-<!--    <module>shaded</module>-->
+    <module>bookkeeper-dist</module>
+    <module>shaded</module>
     <module>microbenchmarks</module>
-<!--    <module>tests</module>-->
+    <module>tests</module>
     <module>testmoduleBook</module>
   </modules>
 
@@ -1042,11 +1042,11 @@
         <profile>
           <id>expensive-modules-to-build</id>
           <modules>
-            <module>stream</module>
-            <module>tools</module>
-            <module>bookkeeper-dist</module>
-            <module>shaded</module>
-            <module>tests</module>
+<!--            <module>stream</module>-->
+<!--            <module>tools</module>-->
+<!--            <module>bookkeeper-dist</module>-->
+<!--            <module>shaded</module>-->
+<!--            <module>tests</module>-->
           </modules>
         </profile>
 

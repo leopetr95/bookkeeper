@@ -41,7 +41,7 @@
     <dependency>
       <groupId>org.apache.bookkeeper</groupId>
       <artifactId>statelib</artifactId>
-      <version>${project.parent.version}</version>
+      <version>4.11.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.curator</groupId>
@@ -50,7 +50,7 @@
     <dependency>
       <groupId>org.apache.distributedlog</groupId>
       <artifactId>distributedlog-core</artifactId>
-      <version>${project.parent.version}</version>
+      <version>4.11.0</version>
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
