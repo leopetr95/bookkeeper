@@ -74,15 +74,6 @@
     <module>testmoduleBook</module>
   </modules>
 
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>expensive-modules-to-build</id>-->
-<!--      <modules>-->
-<!--        <module>stream</module>-->
-<!--      </modules>-->
-<!--    </profile>-->
-<!--  </profiles>-->
-
   <mailingLists>
     <mailingList>
       <name>BookKeeper User</name>
@@ -1038,17 +1029,6 @@
     </plugins>
   </build>
   <profiles>
-
-        <profile>
-          <id>expensive-modules-to-build</id>
-          <modules>
-<!--            <module>stream</module>-->
-<!--            <module>tools</module>-->
-<!--            <module>bookkeeper-dist</module>-->
-<!--            <module>shaded</module>-->
-<!--            <module>tests</module>-->
-          </modules>
-        </profile>
 
     <profile>
       <!-- profile used in TravisCI && SonarCloud: Petraglia Leonardo-->

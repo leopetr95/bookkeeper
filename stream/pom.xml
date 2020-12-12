@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.apache.bookkeeper</groupId>
     <artifactId>bookkeeper</artifactId>
-    <version>4.11.0</version>
+    <version>4.11.0-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
   <packaging>pom</packaging>
@@ -41,14 +41,7 @@
     <module>bk-grpc-name-resolver</module>
   </modules>
 
-  <!--  <profiles>-->
-  <!--    <profile>-->
-  <!--      <id>expensive-modules-to-build</id>-->
-  <!--      <modules>-->
-  <!--        <module>stream</module>-->
-  <!--      </modules>-->
-  <!--    </profile>-->
-  <!--  </profiles>-->
+
 
   <build>
     <plugins>
@@ -76,13 +69,6 @@
   </build>
 
   <profiles>
-
-    <profile>
-          <id>expensive-modules-to-build</id>
-          <modules>
-<!--            <module>statelib</module>-->
-          </modules>
-        </profile>
 
     <profile>
       <id>streamTests</id>
