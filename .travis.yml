@@ -9,4 +9,4 @@ addons:
 script:
 
   # -Dtest=... --> Indica la classe di test da eseguire
-  - mvn verify -DfailIfNoTests=false sonar:sonar -Pcode-coverage -Dsonar.projectKey=leopetr95_bookkeeper -Dmaven.test.failure.ignore=true
+  - mvn verify -e -DfailIfNoTests=false sonar:sonar -Pcode-coverage -Dsonar.projectKey=leopetr95_bookkeeper -Dmaven.test.failure.ignore=true
