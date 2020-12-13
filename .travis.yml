@@ -9,3 +9,4 @@ addons:
 script:
 
   - mvn verify -DfailIfNoTests=false -Dmaven.javadoc.skip=true sonar:sonar -Pcode-coverage -Dsonar.projectKey=leopetr95_bookkeeper -Dmaven.test.failure.ignore=true
+

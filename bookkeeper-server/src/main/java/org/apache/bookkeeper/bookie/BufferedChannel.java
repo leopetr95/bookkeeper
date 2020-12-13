@@ -238,6 +238,9 @@ public class BufferedChannel extends BufferedReadChannel implements Closeable {
             // check if it is in the write buffer
             if (writeBuffer != null && writeBufferStartPosition.get() <= pos) {
                 int positionInBuffer = (int) (pos - writeBufferStartPosition.get());
+                System.out.println("1"+writeBuffer.writerIndex());
+                System.out.println("2"+positionInBuffer);
+                System.out.println("3" + dest.writableBytes());
                 int bytesToCopy = Math.min(writeBuffer.writerIndex() - positionInBuffer, dest.writableBytes());
 
                 if (bytesToCopy == 0) {
@@ -261,8 +264,10 @@ public class BufferedChannel extends BufferedReadChannel implements Closeable {
             }else{
                 readBufferStartPosition = pos;
 
+                System.out.println("dsada");
                 int readBytes = fileChannel.read(readBuffer.internalNioBuffer(0, readCapacity),
                         readBufferStartPosition);
+                System.out.println("dsada" + readBytes);
                 if (readBytes <= 0) {
                     throw new IOException("Reading from filechannel returned a non-positive value. Short read.");
                 }

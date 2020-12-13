@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 @RunWith(Enclosed.class)
@@ -433,6 +434,34 @@ public class BufferedChannelTest {
 
             } catch (IOException e) {
 
+
+                e.printStackTrace();
+            }
+
+        }
+
+
+        @Test
+        public void flushAndForceWriteIfRegularFlushTestFalse() {
+
+            try {
+
+                BufferedChannel bufferedChannel = createBufferedChannel(20, -1);
+
+                ByteBuf byteBuf = Unpooled.buffer(25);
+                byte[] bytes = new byte[5];
+                for (int i = 0; i < bytes.length; i++) {
+
+                    bytes[i] = (byte) i;
+                }
+                byteBuf.writeBytes(bytes);
+
+                bufferedChannel.write(byteBuf);
+
+                bufferedChannel.flushAndForceWriteIfRegularFlush(true);
+                Assert.assertEquals(0, bufferedChannel.forceWrite(true));
+
+            } catch (IOException e) {
 
                 e.printStackTrace();
             }

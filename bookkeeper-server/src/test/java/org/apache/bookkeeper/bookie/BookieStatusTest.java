@@ -1,6 +1,8 @@
 package org.apache.bookkeeper.bookie;
 
+
 import org.apache.bookkeeper.bookie.BookieStatus;
+import org.apache.zookeeper.common.IOUtils;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -9,17 +11,19 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 
-import static org.mockito.Mockito.when;
+import static org.apache.zookeeper.common.IOUtils.copyBytes;
+import static org.mockito.Mockito.*;
 
 @RunWith(Enclosed.class)
 public class BookieStatusTest {
@@ -104,7 +108,6 @@ public class BookieStatusTest {
 
         }
 
-        //sdisao
         @Test
         public void parsingNullTest() throws IOException{
 
@@ -262,15 +265,13 @@ public class BookieStatusTest {
                 BookieStatus status = new BookieStatus();
                 status.writeToDirectories(files);
 
+
             }catch (Exception e){
 
                 Assert.assertEquals(e.getClass(), res);
             }
-
-
-
         }
-
+        
     }
 
     public static class mutationCoverageTest{
@@ -288,6 +289,13 @@ public class BookieStatusTest {
             BookieStatus bookieStatus = new BookieStatus();
             bookieStatus.setToReadOnlyMode();
             Assert.assertFalse(bookieStatus.isInWritable());
+        }
+
+        @Test
+        public void ifWritableTest1(){
+
+            BookieStatus bookieStatus = new BookieStatus();
+            Assert.assertTrue(bookieStatus.isInWritable());
         }
 
         @Test
@@ -319,6 +327,27 @@ public class BookieStatusTest {
             Assert.assertTrue(bookieStatus.setToReadOnlyMode());
 
             Assert.assertFalse(bookieStatus.setToReadOnlyMode());
+        }
+
+        @Test
+        public void mockWriteToFile(){
+
+            Writer writer = Mockito.mock(Writer.class);
+
+            try {
+
+                doThrow(new IOException()).when(writer).write((char[]) any());
+                List<File> files = new ArrayList<>();
+                File file = new File("path");
+                files.add(file);
+                BookieStatus status = new BookieStatus();
+                status.writeToDirectories(files);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                Assert.assertEquals(IOException.class, e.getClass());
+            }
+
         }
 
     }
